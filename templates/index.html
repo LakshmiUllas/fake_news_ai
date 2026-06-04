@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Fake News Detector</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>📰 TruthLens AI</h1>
+
+<p class="subtitle">
+    Detect Fake News Using Artificial Intelligence
+</p>
+
+    <form action="/predict" method="POST">
+
+        <textarea
+            name="news"
+            placeholder="Paste news article or headline..."
+            required>
+        </textarea>
+
+        <button type="submit">
+            Analyze News
+        </button>
+
+    </form>
+
+    {% if prediction %}
+
+    <div class="result">
+
+        <h2>{{ prediction }}</h2>
+
+        <p>
+            Confidence:
+            {{ confidence }}%
+        </p>
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+</body>
+
+</html>
